@@ -1,4 +1,4 @@
-package hello
+package jpj
 
 import javax.persistence.Column
 import javax.persistence.Entity

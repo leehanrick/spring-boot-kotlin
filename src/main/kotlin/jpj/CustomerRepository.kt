@@ -1,4 +1,4 @@
-package hello
+package jpj
 
 import org.springframework.data.repository.CrudRepository
 
