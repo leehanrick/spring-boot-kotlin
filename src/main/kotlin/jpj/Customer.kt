@@ -12,6 +12,8 @@ data class Customer(
         val firstName: String,
         val lastName: String,
         val email: String,
+        @Column(unique = true)
+        val username: String,
         @Column(length = 60)
         val password: String,
         val enabled: Boolean = true,

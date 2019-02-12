@@ -2,8 +2,6 @@ package jpj
 
 import org.springframework.web.bind.annotation.*
 
-
-
 @RestController
 class CustomerController(private val repository: CustomerRepository) {
 

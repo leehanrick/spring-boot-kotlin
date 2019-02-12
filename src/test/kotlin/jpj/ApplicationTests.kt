@@ -10,14 +10,21 @@ import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.test.web.client.getForObject
 import org.springframework.test.context.junit.jupiter.SpringExtension
 
+
 @ExtendWith(SpringExtension::class)
-@SpringBootTest(webEnvironment= WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class ApplicationTests(@Autowired private val restTemplate: TestRestTemplate) {
 
-	@Test
-	fun findAll() {
-		val content = """[{"id":1,"firstName":"Jack","lastName":"Bauer","email":"jack@str.com","password":"","enabled":true,"secret":"Secret","using2FA":false}]"""
-		assertEquals(content, restTemplate.getForObject<String>("/customers"))
-	}
+    @Test
+    fun findAll() {
+        val content = """[{"id":1,"firstName":"Jack","lastName":"Bauer","email":"jack@str.com","username":"jack","password":"password","enabled":true,"secret":"Secret","using2FA":false}]"""
+        assertEquals(content, restTemplate.getForObject<String>("/customers"))
+    }
+
+    @Test
+    fun shouldReturn200WhenSendingRequestToManagementEndpoint() {
+        val a = restTemplate.getForObject<Map<String, *>>("/actuator/health")
+        assertEquals(a!!["status"], "UP")
+    }
 
 }

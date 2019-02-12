@@ -15,7 +15,7 @@ class Application {
     @Bean
     fun init(repository: CustomerRepository) = CommandLineRunner {
         // save a couple of customers
-        repository.save(Customer(firstName = "Jack", lastName = "Bauer", email = "jack@str.com", password = "", secret = "Secret"))
+        repository.save(Customer(firstName = "Jack", lastName = "Bauer", email = "jack@str.com", password = "password", secret = "Secret", username = "jack"))
 
 
         // fetch all customers
