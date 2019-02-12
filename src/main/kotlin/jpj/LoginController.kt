@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RestController
 class LoginController(private val repository: CustomerRepository) {
 
     @PostMapping("/login")
-    fun loginService(@RequestBody customer: Customer) {
+    fun loginService(@RequestBody customer: Customer): Boolean {
         val username = customer.username
-        val password = customer.password
+        val password = customer.password!!
+        val cust = repository.findByUsername(username!!)
+        return cust.password == password
     }
 
 }
